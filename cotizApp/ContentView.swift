@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var companyName = "Mantenciones industriales Luis Eduardo Olavarria Cardenas E.I.R.L."
+    @State private var companyName = ""
     @State private var requestDate = Date()
     @State private var contactName = "Luis Olavarría"
     @State private var phoneNumber = "9 74215363"
@@ -51,11 +51,11 @@ struct ContentView: View {
 }
 
 struct NewQuoteView: View {
-    @State private var companyName = ""
+    @State private var companyName = "Mantenciones industriales Luis Eduardo Olavarria Cardenas E.I.R.L."
     @State private var requestDate = Date()
-    @State private var contactName = ""
-    @State private var phoneNumber = ""
-    @State private var email = ""
+    @State private var contactName = "Luis Olavarria"
+    @State private var phoneNumber = "9 74215363"
+    @State private var email = "locservicios@gmail.com"
     @State private var quoteNumber = ""
     
     @State private var laborEntries: [ContentView.LaborEntry] = []
