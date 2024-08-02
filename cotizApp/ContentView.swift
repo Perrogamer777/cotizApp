@@ -3,9 +3,9 @@ import SwiftUI
 struct ContentView: View {
     @State private var companyName = ""
     @State private var requestDate = Date()
-    @State private var contactName = "Luis Olavarría"
-    @State private var phoneNumber = "9 74215363"
-    @State private var email = "locservicios@gmail.com"
+    @State private var contactName = ""
+    @State private var phoneNumber = ""
+    @State private var email = ""
     @State private var quoteNumber = ""
     
     @State private var laborEntries: [LaborEntry] = []
@@ -62,6 +62,14 @@ struct NewQuoteView: View {
     @State private var materialEntries: [ContentView.MaterialEntry] = []
     @State private var transportValue = ""
     @State private var collationValue = ""
+    
+    var total: Double {
+        let laborTotal = laborEntries.reduce(0) { $0 + (Double($1.total) ?? 0) }
+        let materialTotal = materialEntries.reduce(0) { $0 + (Double($1.total) ?? 0) }
+        let transportTotal = Double(transportValue) ?? 0
+        let collationTotal = Double(collationValue) ?? 0
+        return laborTotal + materialTotal + transportTotal + collationTotal
+    }
     
     var body: some View {
         VStack {
@@ -152,7 +160,7 @@ struct NewQuoteView: View {
                 
                 HStack {
                     Spacer()
-                    Text("Total: $ +IVA").font(.title)
+                    Text("Total: $\(total, specifier: "%.2f") +IVA").font(.title)
                 }
             }
             .padding()
